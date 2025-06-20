@@ -1,0 +1,62 @@
+package com.app.presentation.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.application
+import androidx.lifecycle.viewModelScope
+import com.app.common.exception.NoConnectivityException
+import com.app.domain.entities.FilmInfo
+import com.app.domain.usecase.movies.GetFilmsUseCase
+import com.app.presentation.R
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import javax.inject.Inject
+
+@HiltViewModel
+class FilmsViewModel @Inject constructor(
+    application: Application,
+    private val getFilmsUseCase: GetFilmsUseCase
+) : AndroidViewModel(application) {
+
+    private val _showProgressBarMutableStateFlow = MutableStateFlow(false)
+    val showProgressBarStateFlow: StateFlow<Boolean> = _showProgressBarMutableStateFlow
+
+    private val _filmsMutableStateFlow = MutableStateFlow<List<FilmInfo>>(emptyList())
+    val filmsStateFlow: StateFlow<List<FilmInfo>> = _filmsMutableStateFlow
+
+    private val _errorMessageMutableSharedFlow = MutableSharedFlow<String>()
+    val errorMessageSharedFlow: SharedFlow<String> = _errorMessageMutableSharedFlow
+
+    init {
+        getFilms()
+    }
+
+    private fun getFilms() {
+        viewModelScope.launch {
+            try {
+                _showProgressBarMutableStateFlow.emit(true)
+                _filmsMutableStateFlow.emit(getFilmsUseCase())
+                _showProgressBarMutableStateFlow.emit(false)
+            } catch (ex: NoConnectivityException) {
+                _errorMessageMutableSharedFlow.emit(
+                    application.resources.getString(
+                        R.string.error_no_internet
+                    )
+                )
+                _showProgressBarMutableStateFlow.emit(false)
+            } catch (ex: Exception) {
+                _errorMessageMutableSharedFlow.emit(
+                    application.resources.getString(
+                        R.string.error_something_went_wrong
+                    )
+                )
+                _showProgressBarMutableStateFlow.emit(false)
+            }
+        }
+    }
+
+}

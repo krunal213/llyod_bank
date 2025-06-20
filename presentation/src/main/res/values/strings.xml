@@ -1,0 +1,8 @@
+<resources>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_my">MyActivity</string>
+    <string name="error_something_went_wrong">Something went wrong!</string>
+    <string name="error_no_internet">Please check your internet connection!</string>
+    <string name="title_photos">Photos</string>
+    <string name="post_image">Post Image</string>
+</resources>
