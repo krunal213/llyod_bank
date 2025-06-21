@@ -1,11 +1,10 @@
 package com.app.presentation.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.application
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.common.exception.NoConnectivityException
-import com.app.domain.entities.FilmInfo
+import com.app.domain.entities.Film
 import com.app.domain.usecase.movies.GetFilmsUseCase
 import com.app.presentation.R
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,15 +17,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FilmsViewModel @Inject constructor(
-    application: Application,
+    val application: Application,
     private val getFilmsUseCase: GetFilmsUseCase
-) : AndroidViewModel(application) {
+) : ViewModel() {
 
     private val _showProgressBarMutableStateFlow = MutableStateFlow(false)
     val showProgressBarStateFlow: StateFlow<Boolean> = _showProgressBarMutableStateFlow
 
-    private val _filmsMutableStateFlow = MutableStateFlow<List<FilmInfo>>(emptyList())
-    val filmsStateFlow: StateFlow<List<FilmInfo>> = _filmsMutableStateFlow
+    private val _filmsMutableStateFlow = MutableStateFlow<List<Film>>(emptyList())
+    val filmsStateFlow: StateFlow<List<Film>> = _filmsMutableStateFlow
 
     private val _errorMessageMutableSharedFlow = MutableSharedFlow<String>()
     val errorMessageSharedFlow: SharedFlow<String> = _errorMessageMutableSharedFlow

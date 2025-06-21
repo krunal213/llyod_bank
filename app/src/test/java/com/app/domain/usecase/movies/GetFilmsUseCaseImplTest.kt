@@ -1,7 +1,6 @@
 package com.app.domain.usecase.movies
 
 import com.app.MockData
-import com.app.data.repository.films.FilmsRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest

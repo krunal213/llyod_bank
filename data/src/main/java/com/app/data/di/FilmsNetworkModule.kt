@@ -1,9 +1,8 @@
 package com.app.data.di
 
 import android.content.Context
-import com.app.data.repository.films.datasource.network.FilmsService
-import com.app.data.repository.films.datasource.network.NetworkConnectionInterceptor
 import com.app.data.BuildConfig
+import com.app.data.repository.films.FilmsNetworkApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,5 +46,5 @@ object FilmsNetworkModule {
 
     @Provides
     @Singleton
-    fun provideMoviesService(retrofit: Retrofit) = retrofit.create(FilmsService::class.java)
+    fun provideFilmsNetworkApi(retrofit: Retrofit) = retrofit.create(FilmsNetworkApi::class.java)
 }

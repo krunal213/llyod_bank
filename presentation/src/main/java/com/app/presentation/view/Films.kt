@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
-import com.app.domain.entities.FilmInfo
+import com.app.domain.entities.Film
 import com.app.presentation.R
 import com.app.presentation.viewmodel.FilmsViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -40,7 +40,7 @@ fun Films(
     modifier: Modifier,
     snackbarHostState: SnackbarHostState,
     viewModel: FilmsViewModel = hiltViewModel(),
-    onFilmClick: (filmInfo: FilmInfo) -> Unit
+    onFilmClick: (filmInfo: Film) -> Unit
 ) {
 
     val films by viewModel.filmsStateFlow.collectAsStateWithLifecycle()
@@ -66,7 +66,7 @@ fun Films(
 }
 
 @Composable
-private fun FilmCard(filmInfo: FilmInfo, onFilmClick: (filmInfo: FilmInfo) -> Unit) {
+private fun FilmCard(filmInfo: Film, onFilmClick: (filmInfo: Film) -> Unit) {
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -79,7 +79,7 @@ private fun FilmCard(filmInfo: FilmInfo, onFilmClick: (filmInfo: FilmInfo) -> Un
     ) {
         Column(modifier = Modifier.padding(8.dp)) {
             Image(
-                painter = rememberAsyncImagePainter(filmInfo.movieBanner),
+                painter = rememberAsyncImagePainter(filmInfo.movie_banner),
                 contentDescription = stringResource(R.string.title_photos),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -96,7 +96,7 @@ private fun FilmCard(filmInfo: FilmInfo, onFilmClick: (filmInfo: FilmInfo) -> Un
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
-            filmInfo.releaseDate?.let {
+            filmInfo.release_date?.let {
                 Text(
                     it,
                     fontSize = 14.sp,
@@ -113,10 +113,10 @@ private fun FilmCard(filmInfo: FilmInfo, onFilmClick: (filmInfo: FilmInfo) -> Un
 fun FilmCardPreview() {
     Box() {
         FilmCard(
-            FilmInfo(
-                movieBanner = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg",
+            Film(
+                movie_banner = "https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg",
                 title = "Castle in the Sky",
-                releaseDate = "1780"
+                release_date = "1780"
             ),
             {
 

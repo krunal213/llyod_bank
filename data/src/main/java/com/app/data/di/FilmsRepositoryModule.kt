@@ -1,7 +1,7 @@
 package com.app.data.di
 
-import com.app.data.repository.films.FilmsRepository
 import com.app.data.repository.films.FilmsRepositoryImpl
+import com.app.domain.repository_contract.FilmsRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.app.data.repository.films.datasource.network
+package com.app.data.di
 
 import android.content.Context
 import android.net.ConnectivityManager

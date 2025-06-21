@@ -50,12 +50,12 @@ class MainActivity : ComponentActivity() {
                                         FilmDetailsScreen(
                                             id = filmInfo.id,
                                             title = filmInfo.title,
-                                            movieBanner = filmInfo.movieBanner,
+                                            movieBanner = filmInfo.movie_banner,
                                             description = filmInfo.description,
                                             director = filmInfo.director,
-                                            releaseDate = filmInfo.releaseDate,
+                                            releaseDate = filmInfo.release_date,
                                             url = filmInfo.url,
-                                            runningTime = filmInfo.runningTime
+                                            runningTime = filmInfo.running_time
                                         )
                                     )
                                 }
