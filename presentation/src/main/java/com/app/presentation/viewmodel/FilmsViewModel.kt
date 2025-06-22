@@ -7,6 +7,7 @@ import com.app.common.exception.NoConnectivityException
 import com.app.domain.entities.Film
 import com.app.domain.usecase.movies.GetFilmsUseCase
 import com.app.presentation.R
+import com.app.presentation.isNetworkAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -37,9 +38,11 @@ class FilmsViewModel @Inject constructor(
     private fun getFilms() {
         viewModelScope.launch {
             try {
-                _showProgressBarMutableStateFlow.emit(true)
-                _filmsMutableStateFlow.emit(getFilmsUseCase())
-                _showProgressBarMutableStateFlow.emit(false)
+                if (application.isNetworkAvailable()) {
+                    _showProgressBarMutableStateFlow.emit(true)
+                    _filmsMutableStateFlow.emit(getFilmsUseCase())
+                    _showProgressBarMutableStateFlow.emit(false)
+                }
             } catch (ex: NoConnectivityException) {
                 _errorMessageMutableSharedFlow.emit(
                     application.resources.getString(

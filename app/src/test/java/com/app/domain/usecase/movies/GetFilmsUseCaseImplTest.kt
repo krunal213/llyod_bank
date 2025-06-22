@@ -1,6 +1,7 @@
 package com.app.domain.usecase.movies
 
 import com.app.MockData
+import com.app.domain.repository_contract.FilmsRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -23,7 +24,7 @@ class GetFilmsUseCaseImplTest {
     fun convert_film_type_to_film_info_type() = runTest {
         val film = MockData.film
 
-        val expectedResult = MockData.filmInfo
+        val expectedResult = MockData.film
 
         coEvery { filmsRepository.films() } returns listOf(film)
 

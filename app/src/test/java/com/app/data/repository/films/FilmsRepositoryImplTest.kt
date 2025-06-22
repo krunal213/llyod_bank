@@ -1,6 +1,6 @@
 package com.app.data.repository.films
 
-import com.app.data.repository.films.datasource.network.FilmsNetworkDataSource
+import com.app.data.datasource.films.network.FilmsNetworkDataSource
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
