@@ -1,47 +1,22 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("java-library")
+    alias(libs.plugins.jetbrains.kotlin.jvm)
 
     //hilt
-    alias(libs.plugins.hilt)
     kotlin("kapt")
 
     //serialization
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
-    namespace = "com.app.data"
-    compileSdk = 35
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-    buildFeatures {
-        buildConfig = true
-    }
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            //debug server url
-            buildConfigField("String", "BASE_URL", "\"https://ghibliapi.vercel.app/\"")
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
 
@@ -57,10 +32,6 @@ dependencies {
     //serialization
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(project(":common"))
     implementation(project(":domain"))
 }
 
-hilt {
-    enableAggregatingTask = false
-}

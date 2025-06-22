@@ -1,53 +1,32 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    id("java-library")
+    alias(libs.plugins.jetbrains.kotlin.jvm)
 
     //hilt
-    alias(libs.plugins.hilt)
     kotlin("kapt")
 
     //serialization
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
-    namespace = "com.app.domain"
-    compileSdk = 35
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
 
 dependencies {
     //hilt
-    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
     kapt(libs.hilt.compiler)
 
     //serialization
     implementation(libs.kotlinx.serialization.json)
-}
 
-hilt {
-    enableAggregatingTask = false
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }
