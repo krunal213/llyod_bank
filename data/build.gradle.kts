@@ -26,7 +26,7 @@ dependencies {
     implementation(libs.converter.gson)
 
     //hilt
-    implementation(libs.hilt.android)
+    implementation(libs.hilt.core)
     kapt(libs.hilt.compiler)
 
     //serialization
