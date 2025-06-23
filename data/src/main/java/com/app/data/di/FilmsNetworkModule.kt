@@ -1,12 +1,13 @@
 package com.app.data.di
 
+import com.app.data.datasource.films.network.FilmsService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.converter.gson.GsonConverterFactory
-import com.app.data.repository.films.FilmsNetworkApi
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -15,9 +16,11 @@ object FilmsNetworkModule {
     private val URL = "https://ghibliapi.vercel.app/"
 
     @Provides
+    @Singleton
     fun provideGsonConverterFactory() = GsonConverterFactory.create()
 
     @Provides
+    @Singleton
     fun provideRetrofit(gsonConverterFactory: GsonConverterFactory) =
         Retrofit.Builder()
             .baseUrl(URL)
@@ -25,5 +28,6 @@ object FilmsNetworkModule {
             .build()
 
     @Provides
-    fun provideFilmsNetworkApi(retrofit: Retrofit) = retrofit.create(FilmsNetworkApi::class.java)
+    @Singleton
+    fun provideFilmsService(retrofit: Retrofit) = retrofit.create(FilmsService::class.java)
 }
