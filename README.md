@@ -4,8 +4,8 @@ This project demonstrates various Android development concepts using **Jetpack C
 
 ## Screenshots
 <p>
-  <img src="https://github.com/user-attachments/assets/fd19c920-30cb-4a3e-bdd7-84c0adec6a02" alt="List Screen" width="45%" />
-  <img src="https://github.com/user-attachments/assets/2c22223c-f906-48cd-ac71-5f60658fbd30" alt="Details Screen" width="45%" />
+  <img src="https://github.com/user-attachments/assets/fd19c920-30cb-4a3e-bdd7-84c0adec6a02" alt="List Screen" width="30%" />
+  <img src="https://github.com/user-attachments/assets/2c22223c-f906-48cd-ac71-5f60658fbd30" alt="Details Screen" width="30%" />
 </p>
 
 https://github.com/user-attachments/assets/46de1c44-d976-44cf-83c4-0d9808651d41
@@ -52,7 +52,7 @@ The app follows a **modular architecture pattern** with the following main modul
 ## API Integration
 
 This project uses the following public API for fetching articles:
-- **API URL**: [https://newsapi.org/]
+- **API URL**: [https://ghibliapi.vercel.app/]
 
 ---
 
