@@ -9,7 +9,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class GetFilmsUseCaseImplTest {
+class GetFilmsUseCaseTest {
 
     private lateinit var getFilmsUseCase: GetFilmsUseCase
     private lateinit var filmsRepository: FilmsRepository
@@ -17,7 +17,7 @@ class GetFilmsUseCaseImplTest {
     @Before
     fun setUp() {
         filmsRepository = mockk<FilmsRepository>()
-        getFilmsUseCase = GetFilmsUseCaseImpl(filmsRepository)
+        getFilmsUseCase = GetFilmsUseCase(filmsRepository)
     }
 
     @Test

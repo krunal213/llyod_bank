@@ -5,7 +5,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.app.MockData
 import com.app.common.exception.NoConnectivityException
-import com.app.domain.usecase.movies.GetFilmsUseCase
 import com.app.llyodbank.LlyodBankApplication
 import io.mockk.coEvery
 import io.mockk.every
