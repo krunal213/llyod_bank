@@ -105,7 +105,6 @@ private fun FilmCard(filmInfo: Film, onFilmClick: (filmInfo: Film) -> Unit) {
             }
         }
     }
-
 }
 
 @Preview
