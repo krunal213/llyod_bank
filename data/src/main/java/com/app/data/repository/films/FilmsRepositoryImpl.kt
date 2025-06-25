@@ -9,13 +9,10 @@ import javax.inject.Inject
 
 class FilmsRepositoryImpl @Inject constructor(
     private val filmsNetworkDataSource: FilmsNetworkDataSource,
-    private val dispatcher: CoroutineDispatcher
 ) : FilmsRepository {
 
     override suspend fun films(): List<Film> {
-        return withContext(dispatcher) {
-            filmsNetworkDataSource.films()
-        }
+        return filmsNetworkDataSource.films()
     }
 
 }
