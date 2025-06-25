@@ -1,4 +1,4 @@
-package com.app.domain.repository_contract
+package com.app.domain.repository.films
 
 import com.app.domain.entities.Film
 

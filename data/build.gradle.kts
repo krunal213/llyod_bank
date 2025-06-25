@@ -33,5 +33,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(project(":domain"))
+
+    implementation(libs.kotlinx.coroutines.core)
 }
 

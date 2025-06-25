@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.common.exception.NoConnectivityException
 import com.app.domain.entities.Film
-import com.app.domain.usecase.movies.GetFilmsUseCase
+import com.app.domain.usecase.films.GetFilmsUseCase
 import com.app.presentation.R
 import com.app.presentation.isNetworkAvailable
 import kotlinx.coroutines.flow.MutableStateFlow

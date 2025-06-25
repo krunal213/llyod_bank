@@ -1,5 +1,6 @@
 package com.app.data.di
 
+import com.app.data.Constants.URL
 import com.app.data.datasource.films.network.FilmsService
 import dagger.Module
 import dagger.Provides
@@ -12,8 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object FilmsNetworkModule {
-
-    private val URL = "https://ghibliapi.vercel.app/"
 
     @Provides
     @Singleton

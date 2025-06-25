@@ -1,7 +1,8 @@
 package com.app.domain.usecase.movies
 
 import com.app.MockData
-import com.app.domain.repository_contract.FilmsRepository
+import com.app.domain.repository.films.FilmsRepository
+import com.app.domain.usecase.films.GetFilmsUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
