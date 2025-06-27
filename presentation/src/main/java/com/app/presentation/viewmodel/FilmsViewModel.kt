@@ -3,11 +3,9 @@ package com.app.presentation.viewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.common.exception.NoConnectivityException
 import com.app.domain.entities.Film
 import com.app.domain.usecase.films.GetFilmsUseCase
 import com.app.presentation.R
-import com.app.presentation.isNetworkAvailable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -15,6 +13,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import javax.inject.Inject
+import com.app.common.exception.NoConnectivityException
+import com.app.presentation.isNetworkAvailable
 
 @HiltViewModel
 class FilmsViewModel @Inject constructor(

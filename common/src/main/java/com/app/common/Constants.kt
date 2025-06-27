@@ -1,4 +1,4 @@
-package com.app.data
+package com.app.common
 
 object Constants {
 

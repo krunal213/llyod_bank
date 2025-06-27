@@ -27,6 +27,7 @@ dependencies {
 
     //hilt
     implementation(libs.hilt.core)
+    implementation(project(":common"))
     kapt(libs.hilt.compiler)
 
     //serialization

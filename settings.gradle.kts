@@ -23,5 +23,5 @@ rootProject.name = "LlyodBank"
 include(":app")
 include(":presentation")
 include(":domain")
-include(":common")
 include(":data")
+include(":common")
